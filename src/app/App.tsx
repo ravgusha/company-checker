@@ -1,7 +1,7 @@
 
 import HomePage from '../containers/HomePage';
 
-import './App.css';
+import './style.scss';
 
 function App() {
   return (

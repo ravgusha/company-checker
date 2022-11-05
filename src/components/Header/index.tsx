@@ -1,5 +1,15 @@
+import HamburgerMenu from '../HamburgerMenu';
+import Logo from '../Logo';
+
+import './style.scss';
+
 const Header = () => {
-    return (<div>Header</div>)
-}
+  return (
+    <header>
+      <Logo />
+      <HamburgerMenu />
+    </header>
+  );
+};
 
 export default Header;
