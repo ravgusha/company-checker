@@ -1,0 +1,25 @@
+@import '../../styles/constants.scss';
+
+table {
+  border: 1px solid lightgray;
+  font-size: 36px;
+  text-align: center;
+
+  thead {
+    background-color: $SECOND_COLOR;
+    color: #fff;
+
+    th {
+      padding: 4px 65px;
+      font-weight: 700;
+    }
+  }
+}
+
+tbody {
+  border-bottom: 1px solid lightgray;
+
+  tr td {
+    padding: 10px;
+  }
+}
