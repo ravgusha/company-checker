@@ -1,9 +1,14 @@
+import AddPage from '../containers/AddPage';
 import HomePage from '../containers/HomePage';
 
 const routes = [
   {
-    path: '/add',
+    path: '/',
     component: HomePage,
+  },
+  {
+    path: '/add',
+    component: AddPage,
   },
 ];
 
