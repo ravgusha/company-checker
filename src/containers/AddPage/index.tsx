@@ -1,7 +1,11 @@
-import './style.scss';
+import InnForm from '../../components/InnForm';
 
 const AddPage = () => {
-  return <div>hp</div>;
+  return (
+    <main>
+      <InnForm />
+    </main>
+  );
 };
 
 export default AddPage;
