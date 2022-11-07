@@ -1,0 +1,10 @@
+@import '../../styles/constants.scss';
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: $MAIN_COLOR;
+  color: #fff;
+}

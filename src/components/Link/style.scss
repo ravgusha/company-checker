@@ -1,0 +1,14 @@
+@import '../../styles/constants.scss';
+
+a {
+  color: rgb(255, 255, 255);
+  padding: 12px;
+  background-color: $MAIN_COLOR;
+  font-size: 28px;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  text-align: center;
+  align-self: end;
+  margin-top: 19px;
+}

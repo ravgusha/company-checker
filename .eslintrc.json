@@ -17,7 +17,7 @@
   },
   "rules": {
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": "off",
     "eol-last": ["error", "always"],
     "comma-dangle": ["error", "only-multiline"],
     "react/prop-types": "off",
