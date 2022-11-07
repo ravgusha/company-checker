@@ -41,13 +41,18 @@ const columns = [
   }),
   columnHelper.accessor('status', {
     header: () => 'Статус',
-    cell: (info) => <i>{info.getValue() ? 'действует' : 'не действует'}</i>,
+    cell: (info) => <p>{info.getValue() ? 'действует' : 'не действует'}</p>,
+  }),
+  columnHelper.display({
+    id: 'delete',
+    header: () => 'Удалить',
+    cell: () => <button onClick={() => console.log("Удалить")}></button>,
   }),
 ];
 
 const Table = () => {
   const [data, setData] = useState(() => [...defaultData]);
-  const rerender = React.useReducer(() => ({}), {})[1];
+  // const rerender = React.useReducer(() => ({}), {})[1];
 
   const table = useReactTable({
     data,
