@@ -1,31 +1,19 @@
-import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
-
-import { addNewInput } from '../../redux/inputSlice';
-
 import './style.scss';
 
-const InnForm = ({ value }) => {
-  const dispatch = useDispatch();
-  const inputRef = useRef();
+interface IInnForm {
+  onSubmit: () => void;
+  key: string;
+}
 
-  const onSubmit = (id: string, value: string) => {
-    dispatch(addNewInput({ value, id }));
-  };
-
+const InnForm = ({ onSubmit }: IInnForm) => {
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-
-        const id = uuidv4();
-        const value = inputRef.current.value || '';
-
-        onSubmit(id, value);
+        onSubmit;
       }}
     >
-      <input type="text" placeholder="Введите ИНН" defaultValue={value} ref={inputRef} />
+      <input type="text" placeholder="Введите ИНН" />
       <button>Добавить</button>
     </form>
   );
