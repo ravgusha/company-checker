@@ -17,5 +17,11 @@ form {
     padding: 0 17px;
     color: #fff;
     font-size: 26px;
+
+    &:disabled {
+      border: 1px solid #999999;
+      background-color: #cccccc;
+      color: #666666;
+    }
   }
 }

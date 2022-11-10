@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './style.scss';
 
 interface IInnForm {
@@ -6,15 +7,18 @@ interface IInnForm {
 }
 
 const InnForm = ({ onSubmit }: IInnForm) => {
+  const [disabled, setDisabled] = useState(false);
+
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        onSubmit;
+        onSubmit();
+        setDisabled(true);
       }}
     >
       <input type="text" placeholder="Введите ИНН" />
-      <button>Добавить</button>
+      <button disabled={disabled}>{disabled ? "Добавлено" : "Добавить"}</button>
     </form>
   );
 };
