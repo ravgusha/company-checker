@@ -8,7 +8,7 @@ interface IInn {
 
 export type IInnSlice = IInn[];
 
-const initialState: IInnSlice = [];
+const initialState: IInnSlice = JSON.parse(window.localStorage.getItem('innSlice') ?? "[]");
 
 const inputSlice = createSlice({
     name: 'inns',

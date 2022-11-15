@@ -13,4 +13,9 @@ const store = configureStore({
   devTools: process.env.NODE_ENV !== 'production',
 });
 
+store.subscribe(() => {
+  const inns = JSON.stringify(store.getState().innSlice);
+  window.localStorage.setItem('innSlice', inns)
+})
+
 export default store;
