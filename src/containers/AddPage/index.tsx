@@ -1,32 +1,28 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
 
-import { IInput, IInputSlice } from '../../redux/inputSlice';
 import InnForm from '../../components/InnForm';
 import { addNewInput } from '../../redux/inputSlice';
+import { addInn } from '../../redux/innSlice';
+import { IState } from '../../redux/store';
 
-interface IState {
-  inputSlice: IInputSlice;
-}
 
 const AddPage = () => {
-  const inputs = useSelector((state: IState) => state.inputSlice.inputs);
-  const dispatch = useDispatch();
-  console.log(inputs);
+  const onSubmit = (enteredInn: string) => {
+    console.log('dispatch');
+    dispatch(addNewInput());
+    dispatch(addInn(enteredInn));
+  };
 
-  const onSubmit = () => {
-    const id = uuidv4();
-    dispatch(addNewInput({ id }));
+  const inputs = [];
+
+  const inputsQuantity = useSelector((state: IState) => state.inputSlice.value);
+  for (let i = 0; i < inputsQuantity; i++) {
+    inputs.push(<InnForm key={i} onSubmit={onSubmit} />);
   }
 
+  const dispatch = useDispatch();
 
-  return (
-    <main>
-      {inputs.map((input: IInput) => (
-        <InnForm key={input.id} onSubmit={onSubmit}/>
-      ))}
-    </main>
-  );
+  return <main>{inputs}</main>;
 };
 
 export default AddPage;
