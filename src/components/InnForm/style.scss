@@ -1,13 +1,19 @@
 @import '../../styles/constants.scss';
 
 form {
-    font-size: 26px;
+  font-size: 26px;
+  margin-bottom: 15px;
 
-  input[type='text'] {
+  input {
     width: 300px;
     border: 2px solid $MAIN_COLOR;
     padding: 15px 10px;
     margin-right: 15px;
+
+    &:disabled {
+      border: 1px solid #999999;
+      color: #666666;
+    }
   }
 
   button {
@@ -16,5 +22,18 @@ form {
     padding: 0 17px;
     color: #fff;
     font-size: 26px;
+
+    &:disabled {
+      border: 1px solid #999999;
+      background-color: #cccccc;
+      color: #666666;
+    }
+  }
+
+  .error {
+    font-weight: 700;
+    color: red;
+    font-size: 16px;
+    padding-top: 3px;
   }
 }
