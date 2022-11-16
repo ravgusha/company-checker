@@ -7,8 +7,8 @@ import { isINNLegalEntity } from '../../validation';
 import './style.scss';
 
 interface IInnForm {
-  onSubmit: () => void;
-  key: string;
+  onSubmit: (enteredInn: string) => void;
+  key: number;
 }
 
 const InnForm = ({ onSubmit }: IInnForm) => {
@@ -23,8 +23,9 @@ const InnForm = ({ onSubmit }: IInnForm) => {
       initialValues={{
         inn: '',
       }}
-      onSubmit={() => {
-        onSubmit();
+      onSubmit={(values) => {
+        console.log(typeof values.inn);
+        onSubmit(values.inn);
         setDisabled(true);
       }}
       validationSchema={validationsSchema}
