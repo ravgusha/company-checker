@@ -24,7 +24,6 @@ const InnForm = ({ onSubmit }: IInnForm) => {
         inn: '',
       }}
       onSubmit={(values) => {
-        console.log(typeof values.inn);
         onSubmit(values.inn);
         setDisabled(true);
       }}
