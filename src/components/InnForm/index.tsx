@@ -31,8 +31,8 @@ const InnForm = ({ onSubmit }: IInnForm) => {
     >
       <Form>
         <div>
-          <Field name="inn" placeholder="Введите ИНН" disabled={disabled} />
-          <button type="submit" disabled={disabled}>
+          <Field name="inn" placeholder="Введите ИНН" disabled={disabled} className="inn-input"/>
+          <button type="submit" disabled={disabled} className="inn-btn">
             {disabled ? 'Добавлено' : 'Добавить'}
           </button>
         </div>
