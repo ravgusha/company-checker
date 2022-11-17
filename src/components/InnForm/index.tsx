@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { isINNLegalEntity } from '../../validation';
 
 import './style.scss';
+import Button from '../Button';
 
 interface IInnForm {
   onSubmit: (enteredInn: string) => void;
@@ -31,10 +32,13 @@ const InnForm = ({ onSubmit }: IInnForm) => {
     >
       <Form>
         <div>
-          <Field name="inn" placeholder="Введите ИНН" disabled={disabled} className="inn-input"/>
-          <button type="submit" disabled={disabled} className="inn-btn">
-            {disabled ? 'Добавлено' : 'Добавить'}
-          </button>
+          <Field name="inn" placeholder="Введите ИНН" disabled={disabled} className="inn-input" />
+          <Button
+            type="submit"
+            disabled={disabled}
+            className="inn-btn"
+            label={disabled ? 'Добавлено' : 'Добавить'}
+          ></Button>
         </div>
         <ErrorMessage name="inn" render={(msg) => <p className="error">{msg}</p>} />
       </Form>

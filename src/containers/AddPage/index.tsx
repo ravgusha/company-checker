@@ -5,6 +5,7 @@ import { addNewInput } from '../../redux/inputSlice';
 import { addInn } from '../../redux/innSlice';
 import { IState } from '../../redux/store';
 import { useGetCompanyInfoMutation } from '../../redux/apiSlice';
+import Button from '../../components/Button';
 
 const AddPage = () => {
   const [getCompanyInfo] = useGetCompanyInfoMutation();
@@ -13,10 +14,10 @@ const AddPage = () => {
     console.log('dispatch');
     dispatch(addNewInput());
     dispatch(addInn(enteredInn));
-    getCompanyInfo(enteredInn)
-      .then((rep) => {
-        console.log(rep);
-      });
+    // getCompanyInfo(enteredInn)
+    //   .then((rep) => {
+    //     console.log(rep);
+    //   });
   };
 
   const inputs = [];
@@ -28,7 +29,12 @@ const AddPage = () => {
 
   const dispatch = useDispatch();
 
-  return <main>{inputs}</main>;
+  return (
+    <main>
+      {inputs}
+      <Button label="Сохранить" />
+    </main>
+  );
 };
 
 export default AddPage;
