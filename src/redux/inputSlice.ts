@@ -16,10 +16,16 @@ const inputSlice = createSlice({
         value: state.value + 1
       };
     },
+    clearInputs: (state) => {
+      return {
+        ...state,
+        value: 1
+      };
+    },
   }
 });
 
 const { actions, reducer } = inputSlice;
 
 export default reducer;
-export const { addNewInput } = actions;
+export const { addNewInput, clearInputs } = actions;

@@ -1,15 +1,40 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import InnForm from '../../components/InnForm';
-import { addNewInput } from '../../redux/inputSlice';
-import { addInn } from '../../redux/innSlice';
+import { addNewInput, clearInputs } from '../../redux/inputSlice';
+import { addCompany } from '../../redux/companySlice';
 import { IState } from '../../redux/store';
 import Button from '../../components/Button';
+import { useGetCompanyInfoMutation } from '../../redux/apiSlice';
 
 const AddPage = () => {
+  const navigate = useNavigate();
+  const [getCompanyInfo] = useGetCompanyInfoMutation();
+
   const onSubmit = (enteredInn: string) => {
     dispatch(addNewInput());
-    dispatch(addInn(enteredInn));
+    getCompanyInfo(enteredInn)
+      .unwrap()
+      .then((resp) => {
+        console.log(resp);
+        return resp.suggestions[0].data;
+      })
+      .then((resp) => {
+        const company = {
+          inn: enteredInn,
+          id: resp.hid,
+          name: resp.name.short_with_opf,
+          okved: resp.okved,
+          status: resp.state.status,
+        };
+        dispatch(addCompany(company));
+      });
+  };
+
+  const onClick = () => {
+    navigate('/');
+    dispatch(clearInputs());
   };
 
   const inputs = [];
@@ -24,7 +49,7 @@ const AddPage = () => {
   return (
     <main>
       {inputs}
-      <Button label="Сохранить" />
+      <Button label="Сохранить" onClick={onClick} />
     </main>
   );
 };

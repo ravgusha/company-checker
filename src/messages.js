@@ -1,2 +1,4 @@
-export const ENTER_INN_MESSAGE = 'Введите ИНН';
-export const WRONG_INN = 'ИНН не валидный';
+export const MESSAGES = {
+  ENTER_INN_MESSAGE: 'Введите ИНН',
+  WRONG_INN_MESSAGE: 'ИНН не валидный',
+};
