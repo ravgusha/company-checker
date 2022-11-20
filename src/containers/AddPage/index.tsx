@@ -4,20 +4,12 @@ import InnForm from '../../components/InnForm';
 import { addNewInput } from '../../redux/inputSlice';
 import { addInn } from '../../redux/innSlice';
 import { IState } from '../../redux/store';
-import { useGetCompanyInfoMutation } from '../../redux/apiSlice';
 import Button from '../../components/Button';
 
 const AddPage = () => {
-  const [getCompanyInfo] = useGetCompanyInfoMutation();
-
   const onSubmit = (enteredInn: string) => {
-    console.log('dispatch');
     dispatch(addNewInput());
     dispatch(addInn(enteredInn));
-    // getCompanyInfo(enteredInn)
-    //   .then((rep) => {
-    //     console.log(rep);
-    //   });
   };
 
   const inputs = [];

@@ -3,9 +3,10 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as yup from 'yup';
 
 import { isINNLegalEntity } from '../../validation';
+import { ENTER_INN_MESSAGE, WRONG_INN } from '../../messages';
+import Button from '../Button';
 
 import './style.scss';
-import Button from '../Button';
 
 interface IInnForm {
   onSubmit: (enteredInn: string) => void;
@@ -16,7 +17,7 @@ const InnForm = ({ onSubmit }: IInnForm) => {
   const [disabled, setDisabled] = useState(false);
 
   const validationsSchema = yup.object().shape({
-    inn: yup.string().test('INN', 'ИНН не валидный', isINNLegalEntity),
+    inn: yup.string().test('INN', {WRONG_INN}, isINNLegalEntity),
   });
 
   return (
@@ -32,7 +33,7 @@ const InnForm = ({ onSubmit }: IInnForm) => {
     >
       <Form>
         <div>
-          <Field name="inn" placeholder="Введите ИНН" disabled={disabled} className="inn-input" />
+          <Field name="inn" placeholder={ENTER_INN_MESSAGE} disabled={disabled} className="inn-input" />
           <Button
             type="submit"
             disabled={disabled}

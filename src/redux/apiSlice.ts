@@ -5,7 +5,7 @@ export const apiSlice = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://suggestions.dadata.ru', prepareHeaders: (headers) => {
 
-            const token = "a30327e5acc1b3e6b401d2491690328fb22bf8c5";
+            const token = process.env.REACT_APP_TOKEN;
             if (token) {
                 headers.set('Content-Type', 'application/json')
                 headers.set('Authorization', `Token ${token}`)

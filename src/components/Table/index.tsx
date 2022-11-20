@@ -52,7 +52,6 @@ const columns = [
 
 const Table = () => {
   const [data, setData] = useState(() => [...defaultData]);
-  // const rerender = React.useReducer(() => ({}), {})[1];
 
   const table = useReactTable({
     data,
