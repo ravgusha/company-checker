@@ -4,11 +4,10 @@ import InnForm from '../../components/InnForm';
 import { addNewInput } from '../../redux/inputSlice';
 import { addInn } from '../../redux/innSlice';
 import { IState } from '../../redux/store';
-
+import Button from '../../components/Button';
 
 const AddPage = () => {
   const onSubmit = (enteredInn: string) => {
-    console.log('dispatch');
     dispatch(addNewInput());
     dispatch(addInn(enteredInn));
   };
@@ -22,7 +21,12 @@ const AddPage = () => {
 
   const dispatch = useDispatch();
 
-  return <main>{inputs}</main>;
+  return (
+    <main>
+      {inputs}
+      <Button label="Сохранить" />
+    </main>
+  );
 };
 
 export default AddPage;

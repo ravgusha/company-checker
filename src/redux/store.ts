@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { apiSlice } from './apiSlice';
 
 import innSlice, { IInnSlice } from './innSlice';
 import inputSlice, { IInputSlice } from './inputSlice';
@@ -9,7 +10,8 @@ export interface IState {
 }
 
 const store = configureStore({
-  reducer: { inputSlice, innSlice },
+  reducer: { inputSlice, innSlice, [apiSlice.reducerPath]: apiSlice.reducer },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
   devTools: process.env.NODE_ENV !== 'production',
 });
 

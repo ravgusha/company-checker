@@ -1,0 +1,12 @@
+@import '../../styles/constants.scss';
+
+button {
+  color: #fff;
+  padding: 12px;
+  background-color: $MAIN_COLOR;
+  font-size: 28px;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  text-align: center;
+}
