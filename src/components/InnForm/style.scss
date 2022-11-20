@@ -12,7 +12,7 @@ form {
 
     &:disabled {
       border: 1px solid #999999;
-      color: #666666;
+      color: $DISABLED_COLOR;
     }
   }
 
@@ -26,13 +26,13 @@ form {
     &:disabled {
       border: 1px solid #999999;
       background-color: #cccccc;
-      color: #666666;
+      color: $DISABLED_COLOR;
     }
   }
 
   .error {
     font-weight: 700;
-    color: red;
+    color: $ERROR_COLOR;
     font-size: 16px;
     padding-top: 3px;
   }
