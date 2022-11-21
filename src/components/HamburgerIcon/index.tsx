@@ -1,6 +1,6 @@
 import './style.scss';
 
-const HamburgerMenu = () => {
+const HamburgerIcon = () => {
   return (
     <div className="hamburger">
       <span></span>
@@ -10,4 +10,4 @@ const HamburgerMenu = () => {
   );
 };
 
-export default HamburgerMenu;
+export default HamburgerIcon;

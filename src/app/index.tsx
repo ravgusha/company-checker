@@ -6,11 +6,13 @@ import routes from './routes';
 
 import './style.scss';
 import store from '../redux/store';
+import Menu from '../components/Menu';
 
 function App() {
   return (
     <Provider store={store}>
       <Header />
+      <Menu />
       <Routes>
         {routes.map(({ path, component: Component }, i) => (
           <Route key={i} path={path} element={<Component />} />

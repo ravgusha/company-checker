@@ -1,0 +1,11 @@
+@import '../../styles/constants.scss';
+
+.menu {
+    width: 100%;
+    max-width: 300px;
+    height: calc(100vh - 80px);
+    position: absolute;
+    right: 0;
+    padding: 32px;
+    background-color: $MAIN_COLOR;
+}
