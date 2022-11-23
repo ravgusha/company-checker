@@ -7,9 +7,16 @@
   position: absolute;
   right: 0;
   padding: 32px;
+  color: $MAIN_FONT_COLOR;
   background-color: $MAIN_COLOR;
 
   &.hidden {
     visibility: hidden;
+  }
+
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    font-size: 30px;
   }
 }

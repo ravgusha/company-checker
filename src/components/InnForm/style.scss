@@ -20,7 +20,7 @@ form {
     background-color: $MAIN_COLOR;
     height: 63px;
     padding: 0 17px;
-    color: #fff;
+    color: $MAIN_FONT_COLOR;
     font-size: 26px;
 
     &:disabled {

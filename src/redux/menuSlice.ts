@@ -7,12 +7,12 @@ export interface IMenuSlice {
 const menuSlice = createSlice({
     name: 'menu',
     initialState: {
-        isOpen: false
+        isOpen: false,
     },
     reducers: {
         toggleMenu: (state) => {
             state.isOpen = !state.isOpen
-        }
+        },
     }
 });
 
