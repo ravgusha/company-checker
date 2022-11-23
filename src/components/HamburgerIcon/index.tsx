@@ -1,8 +1,13 @@
+import { MouseEventHandler } from 'react';
 import './style.scss';
 
-const HamburgerIcon = () => {
+interface IHamburgerIcon {
+  onClick: MouseEventHandler;
+}
+
+const HamburgerIcon = ({ onClick }: IHamburgerIcon) => {
   return (
-    <div className="hamburger">
+    <div className="hamburger" onClick={onClick}>
       <span></span>
       <span></span>
       <span></span>

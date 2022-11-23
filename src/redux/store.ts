@@ -3,14 +3,16 @@ import { apiSlice } from './apiSlice';
 
 import companySlice, { ICompanySlice } from './companySlice';
 import inputSlice, { IInputSlice } from './inputSlice';
+import menuSlice, { IMenuSlice } from './menuSlice';
 
 export interface IState {
   inputSlice: IInputSlice;
   companySlice: ICompanySlice;
+  menuSlice: IMenuSlice;
 }
 
 const store = configureStore({
-  reducer: { inputSlice, companySlice, [apiSlice.reducerPath]: apiSlice.reducer },
+  reducer: { inputSlice, companySlice, menuSlice, [apiSlice.reducerPath]: apiSlice.reducer },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
   devTools: process.env.NODE_ENV !== 'production',
 });
