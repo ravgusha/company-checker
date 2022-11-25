@@ -7,7 +7,7 @@ type ITableFilters = {
 
 const TableFilters = ({ table }: ITableFilters) => {
   return (
-    <fieldset>
+    <fieldset id="inputPreview">
       <p>Показать:</p>
       {table.getAllLeafColumns().map((column) => {
         return (
@@ -15,6 +15,7 @@ const TableFilters = ({ table }: ITableFilters) => {
             <div key={column.id} className="table-checkbox">
               <label>
                 <input
+                  className="css-checkbox"
                   {...{
                     type: 'checkbox',
                     checked: column.getIsVisible(),
