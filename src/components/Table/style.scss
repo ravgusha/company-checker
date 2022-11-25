@@ -2,6 +2,7 @@
 
 .table-cont {
   display: flex;
+  gap: 30px;
 
   table {
     border: 1px solid lightgray;
@@ -43,6 +44,16 @@
       }
     }
   }
+
+  fieldset {
+    font-size: 30px;
+    padding: 10px;
+
+    p {
+      margin-bottom: 15px;
+    }
+  }
+
   .table-checkbox {
     display: flex;
   }

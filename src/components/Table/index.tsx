@@ -64,10 +64,11 @@ const Table = () => {
     },
     onColumnVisibilityChange: setColumnVisibility,
   });
-  console.log(columnVisibility);
+
   return (
     <div className="table-cont">
       <fieldset>
+        <p>Показать:</p>
         {table.getAllLeafColumns().map((column) => {
           return (
             column.getCanHide() && (
