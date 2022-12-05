@@ -1,4 +1,7 @@
 import { createColumnHelper } from '@tanstack/react-table';
+import { useDispatch } from 'react-redux';
+import { deleteCompany } from '../../redux/companySlice';
+import DeleteButton from './DeleteButton';
 
 export interface ICompany {
   inn?: string;
@@ -35,7 +38,18 @@ export const columns = [
   columnHelper.display({
     id: 'Удалить',
     header: () => 'Удалить',
-    cell: () => <button onClick={() => console.log('Удалить')}> </button>,
+    cell: info => <DeleteButton row={info.row.original} />,
+    // cell: (info) => (
+    //   <button
+    //     onClick={() => {
+    //       const dispatch = useDispatch();
+    //       console.log(info.row.original.id)
+    //       dispatch(deleteCompany(info.row.original.id));
+    //     }}
+    //   ></button>
+    // ),
     enableHiding: false,
   }),
 ];
+
+console.log(typeof columns);

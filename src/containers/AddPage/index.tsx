@@ -11,6 +11,7 @@ import { useGetCompanyInfoMutation } from '../../redux/apiSlice';
 
 const AddPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [getCompanyInfo] = useGetCompanyInfoMutation();
 
   const onSubmit = (enteredInn: string) => {
@@ -44,8 +45,6 @@ const AddPage = () => {
   for (let i = 0; i < inputsQuantity; i++) {
     inputs.push(<InnForm key={i} onSubmit={onSubmit} />);
   }
-
-  const dispatch = useDispatch();
 
   return (
     <ComponentWrapper>

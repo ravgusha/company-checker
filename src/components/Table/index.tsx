@@ -24,9 +24,7 @@ const Table = () => {
     },
     onColumnVisibilityChange: setColumnVisibility,
   });
-
-  console.log(typeof table);
-
+  
   return (
     <div className="table-cont">
       <TableFilters table={table} />
