@@ -1,83 +1,46 @@
-import {
-  useReactTable,
-  getCoreRowModel,
-  flexRender,
-  createColumnHelper,
-} from '@tanstack/react-table';
+import { useReactTable, getCoreRowModel } from '@tanstack/react-table';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { IState } from '../../redux/store';
 
+import { columns } from './columns';
+import TableFilters from './TableFilters';
+import TableHead from './TableHead';
+
 import './style.scss';
-
-interface ICompany {
-  inn?: string;
-  id: string;
-  name?: string;
-  okved?: number;
-  status?: boolean;
-}
-
-const columnHelper = createColumnHelper<ICompany>();
-
-const columns = [
-  columnHelper.accessor('name', {
-    cell: (info) => info.getValue(),
-    header: () => 'Наименование',
-  }),
-  columnHelper.accessor((row) => row.inn, {
-    id: 'inn',
-    cell: (info) => info.getValue(),
-    header: () => 'ИНН',
-  }),
-  columnHelper.accessor('okved', {
-    header: () => 'ОКВЭД',
-    cell: (info) => info.renderValue(),
-  }),
-  columnHelper.accessor('status', {
-    header: () => 'Статус',
-    cell: (info) => <p>{info.getValue() ? 'действует' : 'не действует'}</p>,
-  }),
-  columnHelper.display({
-    id: 'delete',
-    header: () => 'Удалить',
-    cell: () => <button onClick={() => console.log('Удалить')}></button>,
-  }),
-];
+import TableBody from './TableBody';
 
 const Table = () => {
   const data = useSelector((state: IState) => state.companySlice);
+
+  const [columnVisibility, setColumnVisibility] = useState({});
 
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    state: {
+      columnVisibility,
+    },
+    onColumnVisibilityChange: setColumnVisibility,
   });
 
   return (
-    <table>
-      <thead>
-        {table.getHeaderGroups().map((headerGroup) => (
-          <tr key={headerGroup.id}>
-            {headerGroup.headers.map((header) => (
-              <th key={header.id}>
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(header.column.columnDef.header, header.getContext())}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody>
-        {table.getRowModel().rows.map((row) => (
-          <tr key={row.id}>
-            {row.getVisibleCells().map((cell) => (
-              <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div className="table-cont">
+      <TableFilters table={table} />
+      {/* <div id="inputPreview">
+        <input name="cssCheckbox" id="demo_opt_1" type="checkbox" className="css-checkbox" />
+        <label htmlFor="demo_opt_1">Option 1</label>
+        <input name="cssCheckbox" id="demo_opt_2" type="checkbox" className="css-checkbox" />
+        <label htmlFor="demo_opt_2">Option 2</label>
+        <input name="cssCheckbox" id="demo_opt_3" type="checkbox" className="css-checkbox" />
+        <label htmlFor="demo_opt_3">Option 3</label>
+      </div> */}
+      <table>
+        <TableHead table={table} />
+        <TableBody table={table} />
+      </table>
+    </div>
   );
 };
 
