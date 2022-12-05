@@ -1,14 +1,17 @@
 import { useDispatch } from 'react-redux';
 import { deleteCompany } from '../../../redux/companySlice';
 
-const DeleteButton = (row) => {
-  const dispatch = useDispatch();
-  console.log(row.row.id);
+interface IDeleteButton {
+  id: string;
+}
 
+const DeleteButton = ({ id }: IDeleteButton) => {
+  const dispatch = useDispatch();
+  
   return (
     <button
       onClick={() => {
-        dispatch(deleteCompany(row.row.id));
+        dispatch(deleteCompany(id));
       }}
     ></button>
   );
