@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import InnForm from '../../components/InnForm';
+import ComponentWrapper from '../../components/ComponentWrapper';
 import { addNewInput, clearInputs } from '../../redux/inputSlice';
 import { addCompany } from '../../redux/companySlice';
 import { IState } from '../../redux/store';
@@ -47,10 +48,10 @@ const AddPage = () => {
   const dispatch = useDispatch();
 
   return (
-    <main>
+    <ComponentWrapper>
       {inputs}
       <Button label="Сохранить" onClick={onClick} />
-    </main>
+    </ComponentWrapper>
   );
 };
 

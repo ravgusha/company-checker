@@ -1,14 +1,13 @@
+import ComponentWrapper from '../../components/ComponentWrapper';
 import ButtonLink from '../../components/Link';
 import Table from '../../components/Table';
 
-import './style.scss';
-
 const HomePage = () => {
   return (
-    <main>
+    <ComponentWrapper>
       <Table />
       <ButtonLink label="Добавить организацию" to="/add" />
-    </main>
+    </ComponentWrapper>
   );
 };
 
