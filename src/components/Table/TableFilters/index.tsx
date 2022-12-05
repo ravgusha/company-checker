@@ -15,7 +15,6 @@ const TableFilters = ({ table }: ITableFilters) => {
             <div key={column.id} className="table-checkbox">
               <label>
                 <input
-                  className="css-checkbox"
                   {...{
                     type: 'checkbox',
                     checked: column.getIsVisible(),
