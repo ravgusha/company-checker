@@ -1,4 +1,4 @@
-export const isINNLegalEntity = (inputNumber) => {
+export const isINNLegal = (inputNumber) => {
   //преобразуем в строку
   inputNumber = '' + inputNumber;
   //преобразуем в массив

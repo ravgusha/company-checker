@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+
 import { deleteCompany } from '../../../redux/companySlice';
 
 interface IDeleteButton {
