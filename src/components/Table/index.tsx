@@ -1,4 +1,4 @@
-import { useReactTable, getCoreRowModel } from '@tanstack/react-table';
+import { useReactTable, getCoreRowModel, ColumnFiltersState, getFilteredRowModel } from '@tanstack/react-table';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { IState } from '../../redux/store';
@@ -14,18 +14,20 @@ const Table = () => {
   const data = useSelector((state: IState) => state.companySlice);
 
   const [columnVisibility, setColumnVisibility] = useState({});
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     state: {
+      columnFilters,
       columnVisibility,
     },
     onColumnVisibilityChange: setColumnVisibility,
+    onColumnFiltersChange: setColumnFilters,
+    getFilteredRowModel: getFilteredRowModel(),
   });
-
-  console.log(typeof table);
 
   return (
     <div className="table-cont">
