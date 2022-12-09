@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 interface ICompany {
     inn?: string;
     id: string;
@@ -24,11 +23,14 @@ const companySlice = createSlice({
                 okved: action.payload.okved,
                 status: action.payload.status,
             });
-        }
+        },
+        deleteCompany: (state, action) => {
+            return state = state.filter(item => item.id !== action.payload)
+        },
     }
 });
 
 const { actions, reducer } = companySlice;
 
 export default reducer;
-export const { addCompany } = actions;
+export const { addCompany, deleteCompany } = actions;
