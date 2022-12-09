@@ -15,11 +15,11 @@ const TableHead = ({ table }: ITableHead) => {
           {headerGroup.headers.map((header) => (
             <>
               <th key={header.id}>
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(header.column.columnDef.header, header.getContext())}{' '}
+                {header.isPlaceholder ? null : (
+                  <div>{flexRender(header.column.columnDef.header, header.getContext())}</div>
+                )}
                 {header.column.getCanFilter() ? (
-                  <div>
+                  <div className="search-input">
                     <Filter column={header.column} table={table} />
                   </div>
                 ) : null}

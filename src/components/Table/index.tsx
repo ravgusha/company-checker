@@ -32,7 +32,6 @@ const Table = () => {
 
   return (
     <div className="table-cont">
-      {/* <TableFilters table={table} /> */}
       <table>
         <TableHead table={table} />
         <TableBody table={table} />
