@@ -1,4 +1,4 @@
-import { useReactTable, getCoreRowModel, ColumnFiltersState, getFilteredRowModel } from '@tanstack/react-table';
+import { useReactTable, getCoreRowModel, ColumnFiltersState, getFilteredRowModel, getFacetedUniqueValues } from '@tanstack/react-table';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { IState } from '../../redux/store';
@@ -20,6 +20,7 @@ const Table = () => {
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
     state: {
       columnFilters,
       columnVisibility,
@@ -31,7 +32,7 @@ const Table = () => {
 
   return (
     <div className="table-cont">
-      <TableFilters table={table} />
+      {/* <TableFilters table={table} /> */}
       <table>
         <TableHead table={table} />
         <TableBody table={table} />

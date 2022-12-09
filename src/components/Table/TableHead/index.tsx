@@ -32,23 +32,21 @@ const TableHead = ({ table }: ITableHead) => {
   );
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function Filter({ column, table }: { column: Column<any, unknown>; table: Table<any> }) {
   const firstValue = table.getPreFilteredRowModel().flatRows[0]?.getValue(column.id);
-
   const columnFilterValue = column.getFilterValue();
-  
+
   const sortedUniqueValues = React.useMemo(
-    () =>
-     Array.from(column.getFacetedUniqueValues().keys()).sort(),
+    () => Array.from(column.getFacetedUniqueValues().keys()).sort(),
     [column.getFacetedUniqueValues()]
   );
 
   console.log(column.getFacetedUniqueValues());
 
-
   return typeof firstValue === 'number' ? (
     <div>
-      <div className="flex space-x-2">
+      <div>
         <DebouncedInput
           type="number"
           min={Number(column.getFacetedMinMaxValues()?.[0] ?? '')}
@@ -58,7 +56,7 @@ function Filter({ column, table }: { column: Column<any, unknown>; table: Table<
           placeholder={`Min ${
             column.getFacetedMinMaxValues()?.[0] ? `(${column.getFacetedMinMaxValues()?.[0]})` : ''
           }`}
-          className="w-24 border shadow rounded"
+          className="input num"
         />
         <DebouncedInput
           type="number"
@@ -69,15 +67,15 @@ function Filter({ column, table }: { column: Column<any, unknown>; table: Table<
           placeholder={`Max ${
             column.getFacetedMinMaxValues()?.[1] ? `(${column.getFacetedMinMaxValues()?.[1]})` : ''
           }`}
-          className="w-24 border shadow rounded"
+          className="input num"
         />
       </div>
-      <div className="h-1" />
+      <div />
     </div>
   ) : (
     <>
       <datalist id={column.id + 'list'}>
-        {sortedUniqueValues.slice(0, 5000).map((value: any) => (
+        {sortedUniqueValues.slice(0, 5000).map((value) => (
           <option value={value} key={value} />
         ))}
       </datalist>
@@ -86,10 +84,10 @@ function Filter({ column, table }: { column: Column<any, unknown>; table: Table<
         value={(columnFilterValue ?? '') as string}
         onChange={(value) => column.setFilterValue(value)}
         placeholder={`Search... (${column.getFacetedUniqueValues().size})`}
-        className="w-36 border shadow rounded"
+        className="input text"
         list={column.id + 'list'}
       />
-      <div className="h-1" />
+      <div />
     </>
   );
 }
