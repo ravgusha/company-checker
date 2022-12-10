@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <header>
       <Logo />
-      <HamburgerIcon onClick={onClick} />
+      {/* <HamburgerIcon onClick={onClick} /> */}
     </header>
   );
 };

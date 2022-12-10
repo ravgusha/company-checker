@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as yup from 'yup';
 
-import { isINNLegalEntity } from '../../validation';
+import { isINNLegal } from '../../validation';
 import { MESSAGES } from '../../messages';
 import Button from '../Button';
 
@@ -17,7 +17,7 @@ const InnForm = ({ onSubmit }: IInnForm) => {
   const [disabled, setDisabled] = useState(false);
 
   const validationsSchema = yup.object().shape({
-    inn: yup.string().test('INN', `${MESSAGES.WRONG_INN_MESSAGE}`, isINNLegalEntity),
+    inn: yup.string().test('INN', `${MESSAGES.WRONG_INN_MESSAGE}`, isINNLegal),
   });
 
   return (

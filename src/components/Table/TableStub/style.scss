@@ -1,0 +1,18 @@
+div.stub {
+  .stub-image {
+    background-image: url(../../../assets/empty-state.svg);
+    height: 500px;
+    width: 500px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  p {
+    text-align: center;
+  }
+  
+  & + a {
+    align-self: center;
+
+  }
+}

@@ -1,5 +1,7 @@
 import { createColumnHelper } from '@tanstack/react-table';
 
+import DeleteButton from './DeleteButton';
+
 export interface ICompany {
   inn?: string;
   id: string;
@@ -35,7 +37,7 @@ export const columns = [
   columnHelper.display({
     id: 'Удалить',
     header: () => 'Удалить',
-    cell: () => <button onClick={() => console.log('Удалить')}> </button>,
+    cell: info => <DeleteButton id={info.row.original.id} />,
     enableHiding: false,
   }),
 ];

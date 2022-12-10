@@ -9,6 +9,8 @@ form {
     border: 2px solid $MAIN_COLOR;
     padding: 15px 10px;
     margin-right: 15px;
+    font-size: 26px;
+    font-family: inherit;
 
     &:disabled {
       border: 1px solid #999999;
@@ -18,7 +20,7 @@ form {
 
   button {
     background-color: $MAIN_COLOR;
-    height: 63px;
+    height: 66px;
     padding: 0 17px;
     color: $MAIN_FONT_COLOR;
     font-size: 26px;

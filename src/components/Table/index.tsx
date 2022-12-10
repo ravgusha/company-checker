@@ -1,14 +1,14 @@
 import { useReactTable, getCoreRowModel } from '@tanstack/react-table';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { IState } from '../../redux/store';
 
-import { columns } from './columns';
 import TableFilters from './TableFilters';
 import TableHead from './TableHead';
+import TableBody from './TableBody';
+import { columns } from './columns';
+import { IState } from '../../redux/store';
 
 import './style.scss';
-import TableBody from './TableBody';
 
 const Table = () => {
   const data = useSelector((state: IState) => state.companySlice);
@@ -24,12 +24,10 @@ const Table = () => {
     },
     onColumnVisibilityChange: setColumnVisibility,
   });
-
-  console.log(typeof table);
-
+  
   return (
     <div className="table-cont">
-      <TableFilters table={table} />
+      {/* <TableFilters table={table} /> */}
       <table>
         <TableHead table={table} />
         <TableBody table={table} />
