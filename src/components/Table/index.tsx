@@ -2,7 +2,6 @@ import { useReactTable, getCoreRowModel, ColumnFiltersState, getFilteredRowModel
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import TableFilters from './TableFilters';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 import { columns } from './columns';
