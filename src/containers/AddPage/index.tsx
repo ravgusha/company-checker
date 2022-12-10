@@ -19,7 +19,6 @@ const AddPage = () => {
     getCompanyInfo(enteredInn)
       .unwrap()
       .then((resp) => {
-        console.log(resp);
         return resp.suggestions[0].data;
       })
       .then((resp) => {
