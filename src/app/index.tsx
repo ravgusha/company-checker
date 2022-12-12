@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import store from '../redux/store';
-import Menu from '../components/Menu';
-import Header from '../components/Header';
+import store from '@redux/store';
+import Menu from '@components/Menu';
+import Header from '@components/Header';
 import routes from './routes';
 
 import './style.scss';

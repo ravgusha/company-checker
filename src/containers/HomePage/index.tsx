@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 
-import ComponentWrapper from '../../components/ComponentWrapper';
-import ButtonLink from '../../components/Link';
-import Table from '../../components/Table';
-import TableStub from '../../components/Table/TableStub';
-import { IState } from '../../redux/store';
+import ComponentWrapper from '@components/ComponentWrapper';
+import ButtonLink from '@components/Link';
+import Table from '@components/Table';
+import TableStub from '@components/Table/TableStub';
+import { IState } from '@redux/store';
 
 const HomePage = () => {
   const companies = useSelector((state: IState) => state.companySlice);

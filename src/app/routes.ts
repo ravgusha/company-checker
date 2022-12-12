@@ -1,5 +1,5 @@
-import AddPage from '../containers/AddPage';
-import HomePage from '../containers/HomePage';
+import AddPage from '@containers/AddPage';
+import HomePage from '@containers/HomePage';
 
 const routes = [
   {

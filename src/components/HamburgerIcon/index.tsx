@@ -1,4 +1,5 @@
 import { MouseEventHandler } from 'react';
+
 import './style.scss';
 
 interface IHamburgerIcon {

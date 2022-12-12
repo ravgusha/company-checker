@@ -4,7 +4,7 @@ import * as yup from 'yup';
 
 import { isINNLegal } from '../../validation';
 import { MESSAGES } from '../../messages';
-import Button from '../Button';
+import Button from '@components/Button';
 
 import './style.scss';
 

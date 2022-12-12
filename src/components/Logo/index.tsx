@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import logo from '../../assets/logo.svg';
+import logo from '@assets/logo.svg';
 
 import './style.scss';
 

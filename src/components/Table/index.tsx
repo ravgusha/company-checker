@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 import { columns } from './columns';
-import { IState } from '../../redux/store';
+import { IState } from '@redux/store';
 
 import './style.scss';
 

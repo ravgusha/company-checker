@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import InnForm from '../../components/InnForm';
-import ComponentWrapper from '../../components/ComponentWrapper';
-import { addNewInput, clearInputs } from '../../redux/inputSlice';
-import { addCompany } from '../../redux/companySlice';
-import { IState } from '../../redux/store';
-import Button from '../../components/Button';
-import { useGetCompanyInfoMutation } from '../../redux/apiSlice';
+import InnForm from '@components/InnForm';
+import ComponentWrapper from '@components/ComponentWrapper';
+import { addNewInput, clearInputs } from '@redux/inputSlice';
+import { addCompany } from '@redux/companySlice';
+import { IState } from '@redux/store';
+import Button from '@components/Button';
+import { useGetCompanyInfoMutation } from '@redux/apiSlice';
 
 const AddPage = () => {
   const navigate = useNavigate();

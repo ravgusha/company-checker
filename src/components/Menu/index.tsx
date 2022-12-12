@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 
-import { IState } from '../../redux/store';
+import { IState } from '@redux/store';
+
 import './style.scss';
 
 const Menu = () => {
