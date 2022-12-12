@@ -1,9 +1,7 @@
 export const isINNLegal = (inputNumber) => {
-  //преобразуем в строку
   inputNumber = '' + inputNumber;
-  //преобразуем в массив
   inputNumber = inputNumber.split('');
-  //для ИНН в 10 знаков
+
   if (
     inputNumber.length == 10 &&
     inputNumber[9] ==
@@ -20,7 +18,6 @@ export const isINNLegal = (inputNumber) => {
         10
   ) {
     return true;
-    //для ИНН в 12 знаков
   } else if (
     inputNumber.length == 12 &&
     inputNumber[10] ==
