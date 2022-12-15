@@ -12,7 +12,6 @@ function App() {
   return (
     <Provider store={store}>
       <Header />
-      <Menu />
       <Routes>
         {routes.map(({ path, component: Component }, i) => (
           <Route key={i} path={path} element={<Component />} />

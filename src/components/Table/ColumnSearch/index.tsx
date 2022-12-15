@@ -52,7 +52,7 @@ const ColumnSearch = ({ column, table }: { column: Column<any, unknown>; table: 
         type="text"
         value={(columnFilterValue ?? '') as string}
         onChange={(value) => column.setFilterValue(value)}
-        placeholder={`Search... (${column.getFacetedUniqueValues().size})`}
+        placeholder={`Поиск... (${column.getFacetedUniqueValues().size})`}
         className="input text"
         list={column.id + 'list'}
       />
