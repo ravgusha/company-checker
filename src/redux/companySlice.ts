@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { getCompanyStatus } from 'src/helpers';
 interface ICompany {
     inn?: string;
     id: string;
     name?: string;
     okved?: number;
-    status?: boolean;
+    status?: string;
 }
 
 export type ICompanySlice = ICompany[];
@@ -21,7 +22,7 @@ const companySlice = createSlice({
                 id: action.payload.id,
                 name: action.payload.name,
                 okved: action.payload.okved,
-                status: action.payload.status,
+                status: getCompanyStatus(action.payload.status),
             });
         },
         deleteCompany: (state, action) => {

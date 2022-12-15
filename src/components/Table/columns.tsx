@@ -7,7 +7,7 @@ export interface ICompany {
   id: string;
   name?: string;
   okved?: number;
-  status?: boolean;
+  status?: string;
 }
 
 const columnHelper = createColumnHelper<ICompany>();
@@ -32,7 +32,7 @@ export const columns = [
   columnHelper.accessor('status', {
     id: 'Статус',
     header: () => 'Статус',
-    cell: (info) => <p>{info.getValue() ? 'действует' : 'не действует'} </p>,
+    cell: (info) => <p>{info.getValue()} </p>,
   }),
   columnHelper.display({
     id: 'Удалить',
