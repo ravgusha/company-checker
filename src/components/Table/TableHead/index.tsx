@@ -12,21 +12,19 @@ const TableHead = ({ table }: ITableHead) => {
     <thead>
       {table.getHeaderGroups().map((headerGroup) => (
         <tr key={headerGroup.id}>
-          {headerGroup.headers.map((header, index) => (
-            <>
-              <th key={header.id}>
-                {header.isPlaceholder ? null : (
-                  <div key={index} className="table-header">
-                    {flexRender(header.column.columnDef.header, header.getContext())}
-                  </div>
-                )}
-                {header.column.getCanFilter() ? (
-                  <div className="search-input">
-                    <ColumnSearch column={header.column} table={table} />
-                  </div>
-                ) : null}
-              </th>
-            </>
+          {headerGroup.headers.map((header) => (
+            <th key={header.id}>
+              {header.isPlaceholder ? null : (
+                <div className="table-header">
+                  {flexRender(header.column.columnDef.header, header.getContext())}
+                </div>
+              )}
+              {header.column.getCanFilter() ? (
+                <div className="search-input">
+                  <ColumnSearch column={header.column} table={table} />
+                </div>
+              ) : null}
+            </th>
           ))}
         </tr>
       ))}

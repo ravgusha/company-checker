@@ -13,7 +13,6 @@ form {
       padding: 15px 10px;
       margin-right: 15px;
       font-family: inherit;
-      font-weight: 600;
 
       &:disabled {
         border: 1px solid #999999;
@@ -36,7 +35,6 @@ form {
   }
 
   .error {
-    font-weight: 700;
     color: $ERROR_COLOR;
     font-size: 16px;
     padding-top: 3px;
