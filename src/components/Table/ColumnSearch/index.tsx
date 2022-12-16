@@ -1,7 +1,7 @@
-import { useMemo } from "react";
-import { Column, Table } from "@tanstack/react-table";
+import { useMemo } from 'react';
+import { Column, Table } from '@tanstack/react-table';
 
-import DebouncedInput from "./DebouncedInput";
+import DebouncedInput from './DebouncedInput';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ColumnSearch = ({ column, table }: { column: Column<any, unknown>; table: Table<any> }) => {
@@ -14,7 +14,6 @@ const ColumnSearch = ({ column, table }: { column: Column<any, unknown>; table: 
   );
 
   return typeof firstValue === 'number' ? (
-    <div>
       <div>
         <DebouncedInput
           type="number"
@@ -39,13 +38,11 @@ const ColumnSearch = ({ column, table }: { column: Column<any, unknown>; table: 
           className="input num"
         />
       </div>
-      <div />
-    </div>
   ) : (
     <>
       <datalist id={column.id + 'list'}>
-        {sortedUniqueValues.slice(0, 5000).map((value) => (
-          <option value={value} key={value} />
+        {sortedUniqueValues.slice(0, 5000).map((value, index) => (
+          <option value={value} key={index} />
         ))}
       </datalist>
       <DebouncedInput
@@ -56,7 +53,6 @@ const ColumnSearch = ({ column, table }: { column: Column<any, unknown>; table: 
         className="input text"
         list={column.id + 'list'}
       />
-      <div />
     </>
   );
 };

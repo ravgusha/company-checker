@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import InnForm from '@components/InnForm';
 import ComponentWrapper from '@components/ComponentWrapper';
-import { addNewInput, clearInputs } from '@redux/inputSlice';
+import { addNewInput, clearInputs, disableSaveButton, enableSaveButton } from '@redux/inputSlice';
 import { addCompany } from '@redux/companySlice';
 import { IState } from '@redux/store';
 import Button from '@components/Button';
@@ -16,6 +16,7 @@ const AddPage = () => {
 
   const onSubmit = (enteredInn: string) => {
     dispatch(addNewInput());
+    dispatch(enableSaveButton());
     getCompanyInfo(enteredInn)
       .unwrap()
       .then((resp) => {
@@ -37,7 +38,12 @@ const AddPage = () => {
   const onClick = () => {
     navigate('/');
     dispatch(clearInputs());
+    dispatch(disableSaveButton());
   };
+
+  const isSaveButtonDisabled = useSelector(
+    (state: IState) => state.inputSlice.isSaveButtonDisabled
+  );
 
   const inputs = [];
 
@@ -49,7 +55,7 @@ const AddPage = () => {
   return (
     <ComponentWrapper>
       {inputs}
-      <Button label="Сохранить" onClick={onClick} />
+      <Button label="Сохранить" onClick={onClick} disabled={isSaveButtonDisabled} />
     </ComponentWrapper>
   );
 };

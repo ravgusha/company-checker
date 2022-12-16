@@ -2,12 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export interface IInputSlice {
   value: number;
+  isSaveButtonDisabled: boolean;
 }
 
 const inputSlice = createSlice({
   name: 'inputs',
   initialState: {
-    value: 1
+    value: 1,
+    isSaveButtonDisabled: true
   },
   reducers: {
     addNewInput: (state) => {
@@ -22,10 +24,22 @@ const inputSlice = createSlice({
         value: 1
       };
     },
+    enableSaveButton: (state) => {
+      return {
+        ...state,
+        isSaveButtonDisabled: false
+      };
+    },
+    disableSaveButton: (state) => {
+      return {
+        ...state,
+        isSaveButtonDisabled: true
+      };
+    },
   }
 });
 
 const { actions, reducer } = inputSlice;
 
 export default reducer;
-export const { addNewInput, clearInputs } = actions;
+export const { addNewInput, clearInputs, enableSaveButton, disableSaveButton } = actions;
