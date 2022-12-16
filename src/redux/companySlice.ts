@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCompanyStatus } from 'src/helpers';
+import { getCompanyStatus, getConvertedDate } from 'src/helpers';
+
 interface ICompany {
     inn?: string;
     id: string;
@@ -24,10 +25,9 @@ const companySlice = createSlice({
                 name: action.payload.name,
                 okved: action.payload.okved,
                 status: getCompanyStatus(action.payload.status),
-                liquidationDate: new Date(action.payload.liquidationDate).toLocaleDateString("ru-RU")
+                liquidationDate: getConvertedDate(action.payload.liquidationDate)
             });
         },
-        
         deleteCompany: (state, action) => {
             return state = state.filter(item => item.id !== action.payload)
         },

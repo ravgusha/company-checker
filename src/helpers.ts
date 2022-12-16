@@ -15,3 +15,12 @@ export const getCompanyStatus = (status: string) => {
     }
 }
 
+
+export const getConvertedDate = (timestamp: number | null) => {
+    if (timestamp == null) {
+        return;
+    } else {
+        return new Date(timestamp).toLocaleDateString("ru-RU")
+    }
+}
+
