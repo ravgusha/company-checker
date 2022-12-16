@@ -28,6 +28,7 @@ const AddPage = () => {
           name: resp.name.short_with_opf,
           okved: resp.okved,
           status: resp.state.status,
+          liquidationDate: resp.state.liquidation_date,
         };
         dispatch(addCompany(company));
       });

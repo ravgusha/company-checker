@@ -6,6 +6,7 @@ interface ICompany {
     name?: string;
     okved?: number;
     status?: string;
+    liquidationDate?: string;
 }
 
 export type ICompanySlice = ICompany[];
@@ -23,8 +24,10 @@ const companySlice = createSlice({
                 name: action.payload.name,
                 okved: action.payload.okved,
                 status: getCompanyStatus(action.payload.status),
+                liquidationDate: new Date(action.payload.liquidationDate).toLocaleDateString("ru-RU")
             });
         },
+        
         deleteCompany: (state, action) => {
             return state = state.filter(item => item.id !== action.payload)
         },

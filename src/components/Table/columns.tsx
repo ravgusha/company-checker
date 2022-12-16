@@ -8,6 +8,7 @@ export interface ICompany {
   name?: string;
   okved?: number;
   status?: string;
+  liquidationDate?: string;
 }
 
 const columnHelper = createColumnHelper<ICompany>();
@@ -34,10 +35,15 @@ export const columns = [
     header: () => 'Статус',
     cell: (info) => <p>{info.getValue()} </p>,
   }),
+  columnHelper.accessor('liquidationDate', {
+    id: 'liquidationDate',
+    header: () => 'Дата ликвидации',
+    cell: (info) => <p>{info.getValue()} </p>,
+  }),
   columnHelper.display({
     id: 'Удалить',
     header: () => 'Удалить',
-    cell: info => <DeleteButton id={info.row.original.id} />,
+    cell: (info) => <DeleteButton id={info.row.original.id} />,
     enableHiding: false,
   }),
 ];
