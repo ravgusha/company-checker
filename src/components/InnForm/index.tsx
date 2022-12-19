@@ -1,49 +1,42 @@
 import { useState } from 'react';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import * as yup from 'yup';
+import { DaDataPartySuggestion, PartySuggestions } from 'react-dadata';
 
-import { isINNLegal } from '../../validation';
-import { MESSAGES } from '../../messages';
 import Button from '@components/Button';
 
 import './style.scss';
 
 interface IInnForm {
-  onSubmit: (enteredInn: string) => void;
-  key: number;
+  onSubmit: (response: DaDataPartySuggestion) => void;
 }
 
 const InnForm = ({ onSubmit }: IInnForm) => {
-  const [disabled, setDisabled] = useState(false);
-
-  const validationsSchema = yup.object().shape({
-    inn: yup.string().test('INN', `${MESSAGES.WRONG_INN_MESSAGE}`, isINNLegal),
-  });
+  const [inputValue, setInputValue] = useState<DaDataPartySuggestion | undefined>();
+  const [buttonState, setButtonState] = useState({ label: 'Добавить', disabled: false });
 
   return (
-    <Formik
-      initialValues={{
-        inn: '',
-      }}
-      onSubmit={(values) => {
-        onSubmit(values.inn);
-        setDisabled(true);
-      }}
-      validationSchema={validationsSchema}
-    >
-      <Form>
-        <div>
-          <Field name="inn" placeholder={MESSAGES.ENTER_INN_MESSAGE} disabled={disabled} className="inn-input" />
-          <Button
-            type="submit"
-            disabled={disabled}
-            className="inn-btn"
-            label={disabled ? 'Добавлено' : 'Добавить'}
-          ></Button>
-        </div>
-        <ErrorMessage name="inn" render={(msg) => <p className="error">{msg}</p>} />
-      </Form>
-    </Formik>
+    <div className="form-wrapper">
+      <PartySuggestions
+        token="a30327e5acc1b3e6b401d2491690328fb22bf8c5"
+        value={inputValue}
+        onChange={setInputValue}
+      />
+      <Button
+        type="submit"
+        disabled={buttonState.disabled}
+        className="inn-btn"
+        label={buttonState.label}
+        onClick={() => {
+          if (inputValue) {
+            onSubmit(inputValue);
+            setInputValue(undefined);
+            setButtonState({ label: 'Добавлено', disabled: true });
+            setTimeout(() => {
+              setButtonState({ label: 'Добавить', disabled: false });
+            }, 2000);
+          }
+        }}
+      ></Button>
+    </div>
   );
 };
 
