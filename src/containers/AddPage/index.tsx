@@ -1,10 +1,11 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { DaDataPartySuggestion } from 'react-dadata';
 
 import InnForm from '@components/InnForm';
 import ComponentWrapper from '@components/ComponentWrapper';
-import { disableSaveButton, enableSaveButton } from '@redux/inputSlice';
+import { clearInputs, disableSaveButton, enableSaveButton } from '@redux/inputSlice';
 import { addCompany } from '@redux/companySlice';
 import { IState } from '@redux/store';
 import Button from '@components/Button';
@@ -12,6 +13,12 @@ import Button from '@components/Button';
 import 'react-dadata/dist/react-dadata.css';
 
 const AddPage = () => {
+  useEffect(() => {
+    return () => {
+      dispatch(clearInputs());
+    };
+  }, []);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -33,14 +40,21 @@ const AddPage = () => {
     dispatch(disableSaveButton());
   };
 
+  const inputs = [];
+
+  const inputsQuantity = useSelector((state: IState) => state.inputSlice.value);
+  for (let i = 0; i < inputsQuantity; i++) {
+    inputs.push(<InnForm key={i} onSubmit={onSubmit} />);
+  }
+
   const isSaveButtonDisabled = useSelector(
     (state: IState) => state.inputSlice.isSaveButtonDisabled
   );
-  
+
   return (
     <ComponentWrapper>
-      <InnForm onSubmit={onSubmit}/>
-      <Button label="Сохранить" onClick={onClick} disabled={isSaveButtonDisabled}/>
+      {inputs}
+      <Button label="Сохранить" onClick={onClick} disabled={isSaveButtonDisabled} />
     </ComponentWrapper>
   );
 };

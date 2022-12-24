@@ -4,13 +4,18 @@ import { DaDataPartySuggestion, PartySuggestions } from 'react-dadata';
 import Button from '@components/Button';
 
 import './style.scss';
+import { useDispatch } from 'react-redux';
+import { addNewInput } from '@redux/inputSlice';
 
 interface IInnForm {
   onSubmit: (response: DaDataPartySuggestion) => void;
 }
 
 const InnForm = ({ onSubmit }: IInnForm) => {
+  const dispatch = useDispatch();
+  
   const [inputValue, setInputValue] = useState<DaDataPartySuggestion | undefined>();
+  const [inputState, setInputState] = useState(false);
   const [buttonState, setButtonState] = useState({ label: 'Добавить', disabled: false });
 
   return (
@@ -19,6 +24,7 @@ const InnForm = ({ onSubmit }: IInnForm) => {
         token="a30327e5acc1b3e6b401d2491690328fb22bf8c5"
         value={inputValue}
         onChange={setInputValue}
+        inputProps={{ disabled: inputState }}
       />
       <Button
         type="submit"
@@ -28,11 +34,9 @@ const InnForm = ({ onSubmit }: IInnForm) => {
         onClick={() => {
           if (inputValue) {
             onSubmit(inputValue);
-            setInputValue(undefined);
+            setInputState(true);
             setButtonState({ label: 'Добавлено', disabled: true });
-            setTimeout(() => {
-              setButtonState({ label: 'Добавить', disabled: false });
-            }, 2000);
+            dispatch(addNewInput());
           }
         }}
       ></Button>
