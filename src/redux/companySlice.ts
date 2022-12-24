@@ -19,14 +19,19 @@ const companySlice = createSlice({
     initialState,
     reducers: {
         addCompany: (state, action) => {
-            state.push({
-                inn: action.payload.inn,
-                id: action.payload.id,
-                name: action.payload.name,
-                okved: action.payload.okved,
-                status: getCompanyStatus(action.payload.status),
-                liquidationDate: getConvertedDate(action.payload.liquidationDate)
-            });
+            const index = state.findIndex(el => el.id == action.payload.id);
+
+            if (index == -1) {
+                state.push({
+                    inn: action.payload.inn,
+                    id: action.payload.id,
+                    name: action.payload.name,
+                    okved: action.payload.okved,
+                    status: getCompanyStatus(action.payload.status),
+                    liquidationDate: getConvertedDate(action.payload.liquidationDate)
+                });
+            }
+
         },
         deleteCompany: (state, action) => {
             return state = state.filter(item => item.id !== action.payload)
