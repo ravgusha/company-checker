@@ -4,6 +4,21 @@
   display: flex;
   margin-bottom: 30px;
 
+  .delete-btn {
+    color: #fff;
+    padding: 15px;
+    outline: none;
+    border: 2px solid $MAIN_COLOR;
+    background-color: $MAIN_COLOR;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:disabled {
+      border: 2px solid #999999;
+      background-color: #999999;
+    }
+  }
+
   .react-dadata__input {
     display: block;
     box-sizing: border-box;

@@ -1,22 +1,34 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { DaDataPartySuggestion, PartySuggestions } from 'react-dadata';
 
 import Button from '@components/Button';
+import { addNewInput } from '@redux/inputSlice';
+import { deleteCompany } from '@redux/companySlice';
 
 import './style.scss';
-import { useDispatch } from 'react-redux';
-import { addNewInput } from '@redux/inputSlice';
 
 interface IInnForm {
   onSubmit: (response: DaDataPartySuggestion) => void;
+  onDelete: (id: string) => void;
+  innId: string;
 }
 
-const InnForm = ({ onSubmit }: IInnForm) => {
+const InnForm = ({ onSubmit, onDelete, innId }: IInnForm) => {
   const dispatch = useDispatch();
-  
+
   const [inputValue, setInputValue] = useState<DaDataPartySuggestion | undefined>();
-  const [inputState, setInputState] = useState(false);
-  const [buttonState, setButtonState] = useState({ label: 'Добавить', disabled: false });
+  const [isInputDisabled, setIsInputDisabled] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+  const handleInputChange = () => {
+    if (inputValue) {
+      onSubmit(inputValue);
+      setIsInputDisabled(true);
+      setIsButtonDisabled(false);
+      dispatch(addNewInput());
+    }
+  };
 
   return (
     <div className="form-wrapper">
@@ -24,22 +36,17 @@ const InnForm = ({ onSubmit }: IInnForm) => {
         token="a30327e5acc1b3e6b401d2491690328fb22bf8c5"
         value={inputValue}
         onChange={setInputValue}
-        inputProps={{ disabled: inputState }}
+        inputProps={{ disabled: isInputDisabled, onBlur: handleInputChange }}
       />
       <Button
-        type="submit"
-        disabled={buttonState.disabled}
-        className="inn-btn"
-        label={buttonState.label}
         onClick={() => {
-          if (inputValue) {
-            onSubmit(inputValue);
-            setInputState(true);
-            setButtonState({ label: 'Добавлено', disabled: true });
-            dispatch(addNewInput());
-          }
+          const companyId = inputValue?.data.hid;
+          onDelete(innId);
+          dispatch(deleteCompany(companyId));
         }}
-      ></Button>
+        label={'X'}
+        disabled={isButtonDisabled}
+      />
     </div>
   );
 };

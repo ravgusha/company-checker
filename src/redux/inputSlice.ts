@@ -1,39 +1,37 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import { v4 as uuid } from 'uuid';
 export interface IInputSlice {
   value: number;
-  isSaveButtonDisabled: boolean;
+  inputs: IInput[];
+}
+
+interface IInput {
+  id: string;
+}
+const initialState = {
+  value: 1,
+  inputs: [{ id: "1" }]
 }
 
 const inputSlice = createSlice({
   name: 'inputs',
-  initialState: {
-    value: 1,
-    isSaveButtonDisabled: true
-  },
+  initialState: initialState,
   reducers: {
     addNewInput: (state) => {
+      const newInput = { id: uuid() }
+
       return {
-        ...state,
+        inputs: [...state.inputs, newInput],
         value: state.value + 1
       };
     },
-    clearInputs: (state) => {
-      return {
-        ...state,
-        value: 1
-      };
+    clearInputs: () => {
+      return initialState
     },
-    enableSaveButton: (state) => {
+    deleteInput: (state, action) => {
       return {
-        ...state,
-        isSaveButtonDisabled: false
-      };
-    },
-    disableSaveButton: (state) => {
-      return {
-        ...state,
-        isSaveButtonDisabled: true
+        inputs: state.inputs.filter(input => input.id !== action.payload),
+        value: state.value - 1
       };
     },
   }
@@ -42,4 +40,4 @@ const inputSlice = createSlice({
 const { actions, reducer } = inputSlice;
 
 export default reducer;
-export const { addNewInput, clearInputs, enableSaveButton, disableSaveButton } = actions;
+export const { addNewInput, clearInputs, deleteInput } = actions;
