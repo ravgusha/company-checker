@@ -24,6 +24,7 @@
         .table-header {
           border-bottom: 1px solid $TABLE_BORDER_COLOR;
           padding: 0 15px 10px;
+          white-space: nowrap;
         }
 
         .search-input {
